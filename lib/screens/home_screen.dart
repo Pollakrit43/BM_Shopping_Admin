@@ -19,16 +19,16 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('BM Shopping'),
         centerTitle: true,
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF010A26),
       ),
+        backgroundColor: Color(0xFF54BFA1),
       body: SizedBox(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            
             Container(
               width: double.infinity,
-              height: 150,
+              height: 120,
               padding: const EdgeInsets.symmetric(
                 horizontal: 10,
               ),
@@ -37,8 +37,15 @@ class HomeScreen extends StatelessWidget {
                   Get.to(() => ProductScreen());
                 },
                 child: const Card(
+                  color: Color(0xFF4A96D9),
                   child: Center(
-                    child: Text('Go to Products'),
+                    child: Text('Go to Products',  
+                    style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    ),   
+                    ),
+                    
                   ),
                 ),
               ),

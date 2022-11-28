@@ -27,8 +27,10 @@ class NewProductScreen extends StatelessWidget {
         title: Text(
           'Add a Product',
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF010A26),
+        centerTitle: true,
       ),
+      backgroundColor: Color(0xFF54BFA1),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(10.0),
@@ -64,7 +66,7 @@ class NewProductScreen extends StatelessWidget {
                     },
                     child: Card(
                       margin: EdgeInsets.zero,
-                      color: Colors.black,
+                      color: Color(0xFF4A96D9),
                       child: Row(
                         children: [
                           IconButton(
@@ -209,12 +211,12 @@ class NewProductScreen extends StatelessWidget {
                       Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.black,
+                      primary: Color(0xFF010A26),
                     ),
                     child: const Text(
                       'Save',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 40,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

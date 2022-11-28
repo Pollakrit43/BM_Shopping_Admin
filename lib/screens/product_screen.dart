@@ -16,8 +16,10 @@ class ProductScreen extends StatelessWidget {
         title: Text(
           'Products',
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF010A26),
+        centerTitle: true,
       ),
+      backgroundColor: Color(0xFF54BFA1),
       body: Padding(
         padding: EdgeInsets.all(10.0),
         child: Column(
@@ -30,7 +32,7 @@ class ProductScreen extends StatelessWidget {
                 },
                 child: Card(
                   margin: EdgeInsets.zero,
-                  color: Colors.black,
+                  color: Color(0xFF4A96D9),
                   child: Row(
                     children: [
                       IconButton(
@@ -174,7 +176,7 @@ class ProductCard extends StatelessWidget {
                         ],
                       ),
                       Row(
-                        children: [
+                        children: [                      
                           const Text(
                             'Quantity',
                             style: TextStyle(
