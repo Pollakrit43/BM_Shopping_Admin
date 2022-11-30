@@ -121,6 +121,11 @@ class NewProductScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                 buildTextFormField(
+                  'Product id',
+                  'id',
+                  productController,
+                ),
                 buildTextFormField(
                   'Product name',
                   'name',

@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
-  final String? id;
+  final String id;
   final String name;
   final String category;
   final String description;
@@ -14,7 +14,7 @@ class Product extends Equatable {
   int quantity;
 
   Product({
-    this.id,
+    required this.id,
     required this.name,
     required this.category,
     required this.description,
@@ -26,7 +26,7 @@ class Product extends Equatable {
   });
 
   @override
-  List<Object?> get props {
+  List<Object> get props {
     return [
       id,
       name,
@@ -66,6 +66,7 @@ class Product extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'name': name,
       'category': category,
       'description': description,
