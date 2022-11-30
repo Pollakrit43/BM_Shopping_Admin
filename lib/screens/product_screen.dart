@@ -63,7 +63,7 @@ class ProductScreen extends StatelessWidget {
                   itemCount: productController.products.length,
                   itemBuilder: (context, index) {
                     return SizedBox(
-                      height: 210,
+                      height: 200,
                       child: ProductCard(
                         product: productController.products[index],
                         index: index,
@@ -96,7 +96,6 @@ class ProductCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.only(
         top: 10,
-      
       ),
       child: Padding(
         padding: const EdgeInsets.all(5.0),
@@ -176,7 +175,7 @@ class ProductCard extends StatelessWidget {
                         ],
                       ),
                       Row(
-                        children: [                      
+                        children: [
                           const Text(
                             'Quantity',
                             style: TextStyle(
@@ -214,7 +213,7 @@ class ProductCard extends StatelessWidget {
                             ),
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ),

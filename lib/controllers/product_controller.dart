@@ -45,7 +45,7 @@ class ProductController extends GetxController {
     products[index] = product;
   }
 
-   void saveNewProductQuantity(
+  void saveNewProductQuantity(
     Product product,
     String field,
     int value,
