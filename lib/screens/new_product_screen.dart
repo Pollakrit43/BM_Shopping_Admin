@@ -26,6 +26,11 @@ class NewProductScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Add a Product',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: MediaQuery.of(context).size.width * 0.05,
+          ),
         ),
         backgroundColor: Color(0xFF010A26),
         centerTitle: true,
@@ -33,13 +38,15 @@ class NewProductScreen extends StatelessWidget {
       backgroundColor: Color(0xFF54BFA1),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.all(
+            MediaQuery.of(context).size.width * 0.02,
+          ),
           child: Obx(
             () => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 100,
+                  height: MediaQuery.of(context).size.width * 0.3,
                   child: InkWell(
                     onTap: () async {
                       ImagePicker _picker = ImagePicker();
@@ -93,15 +100,17 @@ class NewProductScreen extends StatelessWidget {
                                 print(productController.newProduct['imageUrl']);
                               }
                             },
-                            icon: const Icon(
+                            icon: Icon(
                               Icons.add,
                               color: Colors.white,
+                              size: MediaQuery.of(context).size.width * 0.05,
                             ),
                           ),
-                          const Text(
+                          Text(
                             'Add image',
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize:
+                                  MediaQuery.of(context).size.width * 0.05,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
@@ -111,17 +120,18 @@ class NewProductScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.025,
                 ),
-                const Text(
+                Text(
                   'Product information',
                   style: TextStyle(
-                    fontSize: 16,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
+                    fontSize: MediaQuery.of(context).size.width * 0.05,
                   ),
                 ),
-                 buildTextFormField(
+                buildTextFormField(
                   'Product id',
                   'id',
                   productController,
@@ -142,7 +152,7 @@ class NewProductScreen extends StatelessWidget {
                 //   productController,
                 // ),
                 DropdownButtonFormField(
-                  iconSize: 20,
+                  iconSize: MediaQuery.of(context).size.width * 0.05,
                   decoration: InputDecoration(
                     hintText: 'Product Category',
                   ),
@@ -160,69 +170,94 @@ class NewProductScreen extends StatelessWidget {
                     );
                   },
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.02,
                 ),
                 buildSlider(
                   'Price',
                   'price',
                   productController,
                   productController.price,
+                  context,
                 ),
                 buildSlider(
                   'Quantity',
                   'quantity',
                   productController,
                   productController.quantity,
+                  context,
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.02,
                 ),
                 buildCheckbox(
                   'Recommend',
                   'isRecommended',
                   productController,
                   productController.isRecommended,
+                  context,
                 ),
                 buildCheckbox(
                   'Popular',
                   'isPopular',
                   productController,
                   productController.isPopular,
+                  context,
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.02,
                 ),
                 SizedBox(
                   width: double.infinity,
+                  height: MediaQuery.of(context).size.width * 0.12,
                   child: ElevatedButton(
                     onPressed: () {
-                      database.addProduct(
-                        Product(
-                          id: productController.newProduct['id'],
-                          name: productController.newProduct['name'],
-                          category: productController.newProduct['category'],
-                          description:
-                              productController.newProduct['description'],
-                          imageUrl: productController.newProduct['imageUrl'],
-                          isRecommended:
-                              productController.newProduct['isRecommended'] ??
-                                  false,
-                          isPopular:
-                              productController.newProduct['isPopular'] ??
-                                  false,
-                          price: productController.newProduct['price'].toInt(),
-                          quantity:
-                              productController.newProduct['quantity'].toInt(),
-                        ),
-                      );
-                      Navigator.pop(context);
+                      try {
+                        database.addProduct(
+                          Product(
+                            id: productController.newProduct['id'],
+                            name: productController.newProduct['name'],
+                            category: productController.newProduct['category'],
+                            description:
+                                productController.newProduct['description'],
+                            imageUrl: productController.newProduct['imageUrl'],
+                            isRecommended:
+                                productController.newProduct['isRecommended'] ??
+                                    false,
+                            isPopular:
+                                productController.newProduct['isPopular'] ??
+                                    false,
+                            price:
+                                productController.newProduct['price'].toInt(),
+                            quantity: productController.newProduct['quantity']
+                                .toInt(),
+                          ),
+                        );
+                        Navigator.pop(context);
+                      } catch (error) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'กรุณาใส่ข้อมูลให้ครบก่อน',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.04,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color(0xFF010A26),
                     ),
-                    child: const Text(
+                    child: Text(
                       'Save',
                       style: TextStyle(
-                        fontSize: 40,
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
+                        fontSize: MediaQuery.of(context).size.width * 0.05,
                       ),
                     ),
                   ),
@@ -240,16 +275,18 @@ class NewProductScreen extends StatelessWidget {
     String name,
     ProductController productController,
     bool? controllerValue,
+    BuildContext context,
   ) {
     return Row(
       children: [
         SizedBox(
-          width: 125,
+          width: MediaQuery.of(context).size.width * 0.3,
           child: Text(
             title,
-            style: const TextStyle(
-              fontSize: 14,
+            style: TextStyle(
+              color: Colors.black,
               fontWeight: FontWeight.bold,
+              fontSize: MediaQuery.of(context).size.width * 0.04,
             ),
           ),
         ),
@@ -274,15 +311,16 @@ class NewProductScreen extends StatelessWidget {
     String name,
     ProductController productController,
     double? controllerValue,
+    BuildContext context,
   ) {
     return Row(
       children: [
         SizedBox(
-          width: 70,
+          width: MediaQuery.of(context).size.width * 0.2,
           child: Text(
             title,
-            style: const TextStyle(
-              fontSize: 14,
+            style: TextStyle(
+              fontSize: MediaQuery.of(context).size.width * 0.04,
               fontWeight: FontWeight.bold,
             ),
           ),

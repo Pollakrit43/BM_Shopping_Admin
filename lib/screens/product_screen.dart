@@ -15,17 +15,24 @@ class ProductScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Products',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: MediaQuery.of(context).size.width * 0.05,
+          ),
         ),
         backgroundColor: Color(0xFF010A26),
         centerTitle: true,
       ),
       backgroundColor: Color(0xFF54BFA1),
       body: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(
+          MediaQuery.of(context).size.width * 0.02,
+        ),
         child: Column(
           children: [
             SizedBox(
-              height: 100,
+              height: MediaQuery.of(context).size.width * 0.3,
               child: InkWell(
                 onTap: () {
                   Get.to(() => NewProductScreen());
@@ -39,17 +46,18 @@ class ProductScreen extends StatelessWidget {
                         onPressed: () {
                           Get.to(() => NewProductScreen());
                         },
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.add,
                           color: Colors.white,
+                          size: MediaQuery.of(context).size.width * 0.05,
                         ),
                       ),
-                      const Text(
+                      Text(
                         'Add a new product',
                         style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
                           color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: MediaQuery.of(context).size.width * 0.05,
                         ),
                       ),
                     ],
@@ -57,13 +65,16 @@ class ProductScreen extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              height: MediaQuery.of(context).size.width * 0.02,
+            ),
             Expanded(
               child: Obx(
                 () => ListView.builder(
                   itemCount: productController.products.length,
                   itemBuilder: (context, index) {
                     return SizedBox(
-                      height: 200,
+                      height: MediaQuery.of(context).size.width * 0.5,
                       child: ProductCard(
                         product: productController.products[index],
                         index: index,
@@ -94,55 +105,71 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.only(
-        top: 10,
+      margin: EdgeInsets.only(
+        top: MediaQuery.of(context).size.width * 0.02,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: EdgeInsets.all(
+          MediaQuery.of(context).size.width * 0.01,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              product.name,
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              children: [
+                Text(
+                  product.name,
+                  style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width * 0.04,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.05,
+                ),
+                Text(
+                  'ID - ${product.id}',
+                  style: TextStyle(
+                    fontSize: MediaQuery.of(context).size.width * 0.04,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: MediaQuery.of(context).size.width * 0.02,
             ),
             Text(
               product.description,
-              style: const TextStyle(
-                fontSize: 12,
+              style: TextStyle(
+                fontSize: MediaQuery.of(context).size.width * 0.04,
               ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: MediaQuery.of(context).size.width * 0.02,
             ),
             Row(
               children: [
                 SizedBox(
-                  height: 80,
-                  width: 80,
+                  height: MediaQuery.of(context).size.width * 0.2,
+                  width: MediaQuery.of(context).size.width * 0.2,
                   child: Image.network(
                     product.imageUrl,
                     fit: BoxFit.cover,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: MediaQuery.of(context).size.width * 0.02,
                 ),
                 Expanded(
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          const Text(
+                          Text(
                             'Price',
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: MediaQuery.of(context).size.width * 0.04,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -167,8 +194,8 @@ class ProductCard extends StatelessWidget {
                           ),
                           Text(
                             '\฿${product.price.toStringAsFixed(1)}',
-                            style: const TextStyle(
-                              fontSize: 15,
+                            style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.width * 0.04,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -176,10 +203,10 @@ class ProductCard extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          const Text(
+                          Text(
                             'Quantity',
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: MediaQuery.of(context).size.width * 0.04,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -207,8 +234,8 @@ class ProductCard extends StatelessWidget {
                           ),
                           Text(
                             '${product.quantity.toInt()}',
-                            style: const TextStyle(
-                              fontSize: 15,
+                            style: TextStyle(
+                              fontSize: MediaQuery.of(context).size.width * 0.04,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
