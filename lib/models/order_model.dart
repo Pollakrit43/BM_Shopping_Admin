@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
-import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 
 class Order extends Equatable {
   final int id;
