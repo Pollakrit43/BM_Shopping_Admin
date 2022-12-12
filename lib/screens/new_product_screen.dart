@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_ecom_admin/controllers/controllers.dart';
 import 'package:flutter_ecom_admin/models/product_model.dart';
 import 'package:flutter_ecom_admin/services/database_service.dart';
@@ -135,16 +136,19 @@ class NewProductScreen extends StatelessWidget {
                   'Product id',
                   'id',
                   productController,
+                  TextInputType.number
                 ),
                 buildTextFormField(
                   'Product name',
                   'name',
                   productController,
+                  TextInputType.name
                 ),
                 buildTextFormField(
                   'Product Description',
                   'description',
                   productController,
+                  TextInputType.text
                 ),
                 // buildTextFormField(
                 //   'Product Category',
@@ -350,8 +354,10 @@ class NewProductScreen extends StatelessWidget {
     String hintText,
     String name,
     ProductController productController,
+    TextInputType keyboardType,
   ) {
     return TextFormField(
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         hintText: hintText,
       ),
