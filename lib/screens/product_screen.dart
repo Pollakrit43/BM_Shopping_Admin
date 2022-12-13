@@ -176,8 +176,8 @@ class ProductCard extends StatelessWidget {
                           Slider(
                             value: product.price.toDouble(),
                             min: 0,
-                            max: 200,
-                            divisions: 10,
+                            max: 300,
+                            divisions: 20,
                             activeColor: Colors.black,
                             inactiveColor: Colors.black12,
                             onChanged: (value) {
